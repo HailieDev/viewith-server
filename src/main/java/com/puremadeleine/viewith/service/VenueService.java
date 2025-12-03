@@ -76,7 +76,7 @@ public class VenueService {
                 .collect(Collectors.groupingBy(
                         performance -> performance.getVenue().getId(),
                         Collectors.mapping(
-                                p -> venueServiceMapper.toPerformance(p).of(),
+                                p -> venueServiceMapper.toPerformance(p),
                                 Collectors.toList()
                         )
                 ));

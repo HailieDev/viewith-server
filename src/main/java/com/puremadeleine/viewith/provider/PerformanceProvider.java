@@ -20,8 +20,8 @@ public class PerformanceProvider {
 
     PerformanceRepository performanceRepository;
 
-    public List<PerformanceEntity> search(String keyword) {
-        return performanceRepository.findByTitleContainsIgnoreCase(keyword);
+    public List<PerformanceEntity> search(Long venueId, String keyword) {
+        return performanceRepository.findByVenue_IdAndTitleContainingIgnoreCase(venueId, keyword);
     }
 
     public List<PerformanceEntity> findTopPerformancesPerVenue(int limit) {

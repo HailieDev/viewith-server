@@ -16,7 +16,8 @@ public class PerformanceController {
     PerformanceService performanceService;
 
     @GetMapping("/search")
-    public PerformanceSearchListResDto searchPerformance(@RequestParam String keyword) {
-        return performanceService.searchPerformance(keyword);
+    public PerformanceSearchListResDto searchPerformance(@RequestParam(name = "venue_id") Long venueId,
+                                                         @RequestParam String keyword) {
+        return performanceService.searchPerformance(venueId, keyword);
     }
 }

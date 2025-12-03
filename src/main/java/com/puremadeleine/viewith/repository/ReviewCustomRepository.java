@@ -35,6 +35,7 @@ public class ReviewCustomRepository {
                 .join(reviewEntity.seat, seatEntity)
                 .where(
                         reviewEntity.status.eq(Status.NORMAL),
+                        venueEq(req.venueId()),
                         floorEq(req.floor()),
                         sectionEq(req.section()),
                         seatRowEq(req.seatRow()))
@@ -92,6 +93,7 @@ public class ReviewCustomRepository {
                 .on(reviewEntity.id.eq(imageEntity.sourceId))
                 .where(
                         reviewEntity.status.eq(Status.NORMAL),
+                        venueEq(req.venueId()),
                         floorEq(req.floor()),
                         sectionEq(req.section()),
                         seatRowEq(req.seatRow()))
@@ -131,6 +133,7 @@ public class ReviewCustomRepository {
                 .join(reviewEntity.seat, seatEntity)
                 .where(
                         reviewEntity.status.eq(Status.NORMAL),
+                        venueEq(req.venueId()),
                         floorEq(req.floor()),
                         sectionEq(req.section()),
                         seatRowEq(req.seatRow()))
@@ -139,6 +142,11 @@ public class ReviewCustomRepository {
 
     private int getOffset(ReviewListReqDto req) {
         return (req.page() - 1) * req.size();
+    }
+
+    private BooleanExpression venueEq(Long venueId) {
+        if (Objects.isNull(venueId)) return null;
+        return seatEntity.venue.id.eq(venueId);
     }
 
     private BooleanExpression floorEq(String floor) {

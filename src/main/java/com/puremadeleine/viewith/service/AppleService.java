@@ -100,7 +100,7 @@ public class AppleService {
     }
 
     private String generateClientSecret() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
-        LocalDateTime expiration = LocalDateTime.now().plusMinutes(5);
+        LocalDateTime expiration = LocalDateTime.now().plusMonths(5);
 
         return Jwts.builder()
                 .setHeaderParam(JwsHeader.KEY_ID, appleProperties.getLoginKey())

@@ -11,6 +11,7 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -26,12 +27,13 @@ public class PerformanceServiceTest {
     @Test
     void search_performances_successfully_test() {
         // given
+        Long venueId = 1L;
         String keyword = "더보이즈";
         PerformanceEntity performance = getPerformance();
-        when(performanceProvider.search(anyString())).thenReturn(List.of(performance));
+        when(performanceProvider.search(anyLong(), anyString())).thenReturn(List.of(performance));
 
         // when
-        PerformanceSearchListResDto result = performanceService.searchPerformance(keyword);
+        PerformanceSearchListResDto result = performanceService.searchPerformance(venueId, keyword);
 
         // then
         assertThat(result.getPerformances()).hasSize(1);

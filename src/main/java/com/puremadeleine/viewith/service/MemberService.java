@@ -128,6 +128,7 @@ public class MemberService extends SpringProxyAware<MemberService> {
         long reviewsCnt = reviewProvider.countByMemberId(member.getId());
 
         return ProfileResDto.builder()
+                .memberId(member.getId())
                 .nickname(member.getNickname())
                 .bookmarksCount(bookmarksCnt)
                 .writtenReviewsCount(reviewsCnt)

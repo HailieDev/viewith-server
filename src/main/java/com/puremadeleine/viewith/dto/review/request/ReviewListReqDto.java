@@ -8,6 +8,7 @@ public record ReviewListReqDto(
     Integer page,
     Integer size,
     SortType sortType,
+    Long venueId,
     String floor,
     String section,
     String seatRow

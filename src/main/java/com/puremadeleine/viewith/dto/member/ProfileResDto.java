@@ -13,6 +13,7 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ProfileResDto {
+    Long memberId;
     String nickname;
     Long writtenReviewsCount;
     Long bookmarksCount;

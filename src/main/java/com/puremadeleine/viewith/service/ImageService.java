@@ -41,7 +41,7 @@ public class ImageService {
         return imageProvider.getImageList(sourceIds, SourceType.REVIEW)
                 .stream()
                 .collect(Collectors.groupingBy(
-                        ImageEntity::getId,
+                        ImageEntity::getSourceId,
                         Collectors.mapping(ImageEntity::getImageUrl, Collectors.toList())
                 ));
     }

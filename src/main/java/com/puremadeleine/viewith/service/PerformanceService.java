@@ -25,8 +25,8 @@ public class PerformanceService {
     PerformanceProvider performanceProvider;
     PerformanceServiceMapper mapper;
 
-    public PerformanceSearchListResDto searchPerformance(String keyword) {
-        List<PerformanceEntity> searchList = performanceProvider.search(keyword);
+    public PerformanceSearchListResDto searchPerformance(Long venueId, String keyword) {
+        List<PerformanceEntity> searchList = performanceProvider.search(venueId, keyword);
         var performances = mapper.toPerformanceSearchResDtos(searchList);
         return PerformanceSearchListResDto.builder().performances(performances).build();
     }
